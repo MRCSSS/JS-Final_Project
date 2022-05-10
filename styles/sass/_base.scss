@@ -1,0 +1,23 @@
+/* -----------------  > BASE <  ----------------- */
+// Includes typography, variables, mixins
+
+// ------- > TYPOGRAPHY < --------
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Black+Ops+One&family=Merriweather:ital,wght@1,300;1,400;1,900&family=Oswald:wght@200&display=swap');
+
+// -------- > VARIABLES < --------
+// --- > Colores
+$fondoObscuro: #041100;
+$fondoMedio: #143613;
+$fondoClaro: #013d01;
+$fondoContraste: #8CAEA6;
+$principal: #005E00;
+$contraste1: #FFCB1F;
+$contraste2: #890F06;
+$blanco: #FFFFFF;
+// --- > Fuentes
+$titulo: 'Black Ops One', cursive;
+$subtitulo: 'Alfa Slab One', cursive;
+$italica: 'Merriweather', serif;
+$delgada: 'Oswald', sans-serif;
+
+// ---------- > MIXINS < ---------

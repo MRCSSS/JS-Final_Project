@@ -1,0 +1,59 @@
+/* ----------------  > LAYOUT <  ---------------- */
+// Includes header, footer, grids
+
+// ---------- > BODY < -----------
+body {
+    background-image: url(/img/background.jpg);
+    background-attachment: scroll;
+    background-position: center;
+    background-repeat: repeat;
+    background-size: cover;
+    header {
+        .container__header {
+            .navbar {
+                z-index: 10;
+            }          
+            .searchBar {
+                width: 100%;
+                padding-top: 65px;
+                // display: flex;
+                margin-left: 28%;
+                .searchBar__form {
+                    display: flex;
+                    justify-items: center;
+                    .searchForm {
+                        height: 35px;
+                    }
+                    .searchButton {
+                        margin-top: 14px;
+                        width: 45px;
+                    }
+                }
+            }    
+        }
+    }
+    main {
+        #products {
+            // padding-top: 55px;
+            max-width: 1415px;
+            .products__title { 
+                padding: 15px;
+                font-family: $titulo;
+                color: $contraste1;
+                font-size: 30px;
+                text-align: center;
+                text-shadow: 5px 4px 2px rgba($color: $contraste2, $alpha: 1);
+    
+            }
+            #container__products {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+
+            }
+        }
+    }
+    footer {
+        
+    }
+}

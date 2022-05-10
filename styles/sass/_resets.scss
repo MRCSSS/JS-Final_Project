@@ -1,0 +1,290 @@
+/* ----------------  > RESETS <  ---------------- */
+// Includes a general reset for all web navigators
+
+* {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+	border: none;
+	outline: none;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p,
+blockquote, pre, a, abbr, address, cite, code, del, dfn, em, img,
+ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd,
+ol, ul, li, fieldset, form, label, legend, table, caption, tbody,
+tfoot, thead, tr, th, td, article, aside, canvas, details,
+figcaption, figure, footer, header, hgroup, menu, nav, section,
+summary, time, mark, audio, video, applet, acronym, big, strike,
+tt, u, center, embed, output, ruby {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    font: inherit;
+    font-weight: normal;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+html {
+	box-sizing: border-box;
+    overflow-y: scroll;
+    line-height: 1.15; 
+    -webkit-text-size-adjust: 100%; 
+}
+
+body {
+    line-height:1;
+}
+
+a {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+abbr[title], dfn[title] {
+    border-bottom: 1px dotted #000;
+    cursor: help;
+}
+
+abbr[title] {
+    text-decoration: underline; 
+    text-decoration: underline dotted; 
+}
+
+article, aside, details, figcaption, figure, footer, header,
+hgroup, menu, nav, section, summary, main {
+	display: block;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+b, strong {
+    font-weight: bolder;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none;
+}
+
+button, input[type=button] {
+    width: auto;
+    overflow: visible;
+} 
+button, input, optgroup, select, textarea {
+    font-family: inherit; 
+    font-size: 100%; 
+    line-height: 1.15; 
+    margin: 0; 
+}
+
+button, input { 
+    overflow: visible;
+}
+
+button, select { 
+    text-transform: none;
+}
+
+button, [type="button"], [type="reset"], [type="submit"] {
+    -webkit-appearance: button;
+}
+
+button::-moz-focus-inner, [type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner, [type="submit"]::-moz-focus-inner {
+    border-style: none;
+    padding: 0;
+}
+
+button:-moz-focusring, [type="button"]:-moz-focusring, 
+[type="reset"]:-moz-focusring, [type="submit"]:-moz-focusring {
+    outline: 1px dotted ButtonText;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+fieldset {
+    padding: 0.35em 0.75em 0.625em;
+} 
+
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+hr {
+    box-sizing: content-box; 
+    overflow: visible; 
+    display: block; 
+    height: 1px; 
+    border: 0; 
+    border-top: 1px solid; 
+    margin: 1em 0; 
+    padding: 0;
+}
+
+img, object, embed {
+    max-width: 100%;
+}
+
+img {
+    border-style: none;
+    border: 0;
+    vertical-align: top;
+}
+
+input, select {
+    vertical-align:middle;
+}
+
+input[type="radio"] {
+    vertical-align: text-bottom;
+}
+
+input[type="checkbox"] {
+    vertical-align: bottom;
+}
+
+ins {
+    text-decoration:none;
+}
+
+label, input[type=button], input[type=submit], input[type=file],
+button {
+    cursor: pointer;
+}
+
+legend {
+    box-sizing: border-box; 
+    color: inherit; 
+    display: table; 
+    max-width: 100%; 
+    padding: 0; 
+    white-space: normal; 
+} 
+
+mark {
+    font-style:italic;
+    font-weight:bold;
+}
+
+ol, ul, nav ul {
+	list-style: none;
+}
+
+progress {
+    vertical-align: baseline;
+}
+
+pre {
+    white-space: pre; 
+    white-space: pre-wrap; 
+    white-space: pre-line; 
+    word-wrap: break-word; 
+}
+
+pre, code, kbd, samp {
+    font-family: monospace, sans-serif;
+    font-size: 1em; 
+}
+
+small {
+    font-size: 85%;
+}
+
+sub, sup {
+    font-size: 75%; 
+    line-height: 0; 
+    position: relative;
+    vertical-align: baseline;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+select, input, textarea {
+    font: 99% sans-serif;
+}
+
+summary {
+    display: list-item;
+}
+
+textarea {
+    overflow: auto;
+}
+
+template {
+    display: none;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+    font-size: inherit;
+    font: 100%;
+}
+
+th, td {
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    font-weight: bold;
+    vertical-align: bottom;
+}
+
+td {
+    font-weight: normal;
+    vertical-align: top;
+}
+
+[type="checkbox"], [type="radio"] {
+    box-sizing: border-box; 
+    padding: 0; 
+}
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+    height: auto;
+}
+
+[type="search"] {
+    -webkit-appearance: textfield; 
+    outline-offset: -2px; 
+}
+
+[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+    -webkit-appearance: button; 
+    font: inherit; 
+}
+
+[hidden] {
+    display: none;
+} 
+
