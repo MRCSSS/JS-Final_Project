@@ -9,7 +9,7 @@
 // --------- > FORMS < -----------
 .searchForm[type=text]{
     max-width: 600px;
-    width: 100%;
+    // width: 100%;
     margin: 15px 5px;
     padding: 8px 15px;
     font-family: $italica;
@@ -23,10 +23,10 @@
 
 // --------- > BUTTONS < ---------
 .button {
-    background-color: $contraste1;
+    background-color: $contraste1 !important;
     height: 38px;
     width: 95px;
-    border: solid 2px rgba($fondoMedio,0.6);
+    border: solid 2px rgba($fondoMedio,0.6) !important;
     border-radius: 7px;
 
 }
@@ -222,94 +222,45 @@
 
 // ---------- > NAVBAR < ---------
 .navbar {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    position: fixed;
-    width: 100%;
-    height: 65px;
+    height: 75px;
     background-color: rgba($fondoObscuro, 0.9);
-
-    .socialNetworks {
-        flex: 2;
-        max-width: 800px;
-    }
-
-    .principalLogo {
-        flex: 1;
-        max-width: 800px;
-
-        h1 {
-            font-family: $titulo;
-            color: $contraste1;
-            font-size: 30px;
-            text-align: center;
-            text-shadow: 5px 4px 2px rgba($color: $contraste2, $alpha: 1);
-            .logo {
-                overflow: hidden;
-                height: 45px;
-                width: 45px;
-            }
-        }
-    }
-
-    .navbarListMenu {
-        flex: 2;
-        max-width: 800px;
-        padding-right: 30px;
-        list-style-type: none;
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: space-around;
-        font-family: $titulo;
-        .menuItem {
+    .container {
+        .principalLogo{
+            max-width: 800px;
             a {
-                font-size: 20px;
-                color: $contraste1;
-                display: block;
-                text-align: center;
-                padding: 20px;
-            }
-        }
-        .menuItem:hover {
-            background-color: rgba($color: $fondoMedio, $alpha: 0.7);
-            text-shadow: 5px 4px 2px rgba($color: $contraste2, $alpha: 1);
-        }
-        .dropdown {
-            position: relative;
-            display: inline-block;
-            font-size: 20px;
-
-            .dropdownBtn {
-                color: $contraste1;
-                display: block;
-                text-align: center;
-                padding: 20px;
-                background-color: transparent;
-            }
-            .dropdownBtn:hover {
-                background-color: rgba($color: $fondoMedio, $alpha: 0.7);
-                text-shadow: 5px 4px 2px rgba($color: $contraste2, $alpha: 1);
-            }
-            .dropdownContent {
-                display: none;
-                background-color: rgba($color: $fondoMedio, $alpha: 0.2);
-                max-width: 150px;
-                box-shadow: 0px 4px 4px rgba($color: $fondoObscuro, $alpha: 0.9);
-                a {
+                text-decoration: none;
+                h1 {
+                    font-family: $titulo;
                     color: $contraste1;
-                    display: block;
-                    padding: 15px;
-                    text-decoration: none;
+                    font-size: 35px;
+                    text-align: center;
+                    text-shadow: 5px 4px 2px rgba($color: $contraste2, $alpha: 1);
+                    .logo {
+                        overflow: hidden;
+                        height: 45px;
+                        width: 45px;
+                    }
                 }
-                a:hover {
-                    background-color: rgba($color: $fondoObscuro, $alpha: 0.5);
+            }
+        }
+        .navbarLists  {
+            .navbarList {
+                padding-left: 35px;
+                .navbar-nav {
+                    .nav-item {
+                        .material-symbols-outlined {
+                            cursor: pointer;
+                            color: $contraste1;
+                            font-size: 38px;
+                            background-color: transparent;
+                        }
+                    }
+                }
+                .navbar-nav:hover {
                     text-shadow: 5px 4px 2px rgba($color: $contraste2, $alpha: 1);
                 }
+    
             }
-        }
-        .dropdown:hover .dropdownContent{
-            display: block;
-        }
+        }   
     }
 }

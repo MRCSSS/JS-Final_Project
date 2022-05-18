@@ -9,31 +9,30 @@ body {
     background-repeat: repeat;
     background-size: cover;
     header {
-        .container__header {
-            .navbar {
-                z-index: 10;
-            }          
-            .searchBar {
-                width: 100%;
-                padding-top: 65px;
-                // display: flex;
-                margin-left: 28%;
-                .searchBar__form {
-                    display: flex;
-                    justify-items: center;
-                    .searchForm {
-                        height: 35px;
-                    }
-                    .searchButton {
-                        margin-top: 14px;
-                        width: 45px;
-                    }
-                }
-            }    
-        }
+        nav {
+            z-index: 10;
+        }          
     }
-    main {
-        #products {
+    section {
+        .searchForm {
+            max-width: 1000px;
+            padding-top: 100px;
+            padding-left: 5%;
+            padding-right: 5%;
+            align-items: center;
+            // display: flex;
+            // margin-left: 28%;
+            .searchInput {
+                height: 35px;
+            }
+            .searchButton {
+                display: inline-block;
+                margin-top: 14px;
+                width: 45px;
+            }
+            // }
+        }    
+        .products {
             // padding-top: 55px;
             max-width: 1415px;
             .products__title { 

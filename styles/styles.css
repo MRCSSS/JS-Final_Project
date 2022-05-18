@@ -293,7 +293,6 @@ td {
 /* --------------  > COMPONENTS <  -------------- */
 .searchForm[type=text] {
   max-width: 600px;
-  width: 100%;
   margin: 15px 5px;
   padding: 8px 15px;
   font-family: "Merriweather", serif;
@@ -306,10 +305,10 @@ td {
 }
 
 .button {
-  background-color: #FFCB1F;
+  background-color: #FFCB1F !important;
   height: 38px;
   width: 95px;
-  border: solid 2px rgba(20, 54, 19, 0.6);
+  border: solid 2px rgba(20, 54, 19, 0.6) !important;
   border-radius: 7px;
 }
 
@@ -477,89 +476,38 @@ td {
 }
 
 .navbar {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  position: fixed;
-  width: 100%;
-  height: 65px;
+  height: 75px;
   background-color: rgba(4, 17, 0, 0.9);
 }
-.navbar .socialNetworks {
-  flex: 2;
+.navbar .container .principalLogo {
   max-width: 800px;
 }
-.navbar .principalLogo {
-  flex: 1;
-  max-width: 800px;
+.navbar .container .principalLogo a {
+  text-decoration: none;
 }
-.navbar .principalLogo h1 {
+.navbar .container .principalLogo a h1 {
   font-family: "Black Ops One", cursive;
   color: #FFCB1F;
-  font-size: 30px;
+  font-size: 35px;
   text-align: center;
   text-shadow: 5px 4px 2px #890f06;
 }
-.navbar .principalLogo h1 .logo {
+.navbar .container .principalLogo a h1 .logo {
   overflow: hidden;
   height: 45px;
   width: 45px;
 }
-.navbar .navbarListMenu {
-  flex: 2;
-  max-width: 800px;
-  padding-right: 30px;
-  list-style-type: none;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-around;
-  font-family: "Black Ops One", cursive;
+.navbar .container .navbarLists .navbarList {
+  padding-left: 35px;
 }
-.navbar .navbarListMenu .menuItem a {
-  font-size: 20px;
+.navbar .container .navbarLists .navbarList .navbar-nav .nav-item .material-symbols-outlined {
+  cursor: pointer;
   color: #FFCB1F;
-  display: block;
-  text-align: center;
-  padding: 20px;
-}
-.navbar .navbarListMenu .menuItem:hover {
-  background-color: rgba(20, 54, 19, 0.7);
-  text-shadow: 5px 4px 2px #890f06;
-}
-.navbar .navbarListMenu .dropdown {
-  position: relative;
-  display: inline-block;
-  font-size: 20px;
-}
-.navbar .navbarListMenu .dropdown .dropdownBtn {
-  color: #FFCB1F;
-  display: block;
-  text-align: center;
-  padding: 20px;
+  font-size: 38px;
   background-color: transparent;
 }
-.navbar .navbarListMenu .dropdown .dropdownBtn:hover {
-  background-color: rgba(20, 54, 19, 0.7);
+.navbar .container .navbarLists .navbarList .navbar-nav:hover {
   text-shadow: 5px 4px 2px #890f06;
-}
-.navbar .navbarListMenu .dropdown .dropdownContent {
-  display: none;
-  background-color: rgba(20, 54, 19, 0.2);
-  max-width: 150px;
-  box-shadow: 0px 4px 4px rgba(4, 17, 0, 0.9);
-}
-.navbar .navbarListMenu .dropdown .dropdownContent a {
-  color: #FFCB1F;
-  display: block;
-  padding: 15px;
-  text-decoration: none;
-}
-.navbar .navbarListMenu .dropdown .dropdownContent a:hover {
-  background-color: rgba(4, 17, 0, 0.5);
-  text-shadow: 5px 4px 2px #890f06;
-}
-.navbar .navbarListMenu .dropdown:hover .dropdownContent {
-  display: block;
 }
 
 /* ----------------  > LAYOUT <  ---------------- */
@@ -570,29 +518,28 @@ body {
   background-repeat: repeat;
   background-size: cover;
 }
-body header .container__header .navbar {
+body header nav {
   z-index: 10;
 }
-body header .container__header .searchBar {
-  width: 100%;
-  padding-top: 65px;
-  margin-left: 28%;
+body section .searchForm {
+  max-width: 1000px;
+  padding-top: 100px;
+  padding-left: 5%;
+  padding-right: 5%;
+  align-items: center;
 }
-body header .container__header .searchBar .searchBar__form {
-  display: flex;
-  justify-items: center;
-}
-body header .container__header .searchBar .searchBar__form .searchForm {
+body section .searchForm .searchInput {
   height: 35px;
 }
-body header .container__header .searchBar .searchBar__form .searchButton {
+body section .searchForm .searchButton {
+  display: inline-block;
   margin-top: 14px;
   width: 45px;
 }
-body main #products {
+body section .products {
   max-width: 1415px;
 }
-body main #products .products__title {
+body section .products .products__title {
   padding: 15px;
   font-family: "Black Ops One", cursive;
   color: #FFCB1F;
@@ -600,7 +547,7 @@ body main #products .products__title {
   text-align: center;
   text-shadow: 5px 4px 2px #890f06;
 }
-body main #products #container__products {
+body section .products #container__products {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
