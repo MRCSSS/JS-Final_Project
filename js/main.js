@@ -40,34 +40,62 @@ let cart = [];
 let favList = [];
 
 /* -> Declaración de funciones <- */
-// function getTotalPrice(array) {
-// 	return array.reduce((total, item) => total + item.totalPrice, 0);
-// }
+function notifAlert (prodName, action) {
+	let notifContainer = document.getElementById("notificationContainer");
+	let notifClass = '';
+	let notifIcon = '';
+	let notifMessage = '';
+	if (action == 'add') {
+		notifClass = 'addNotif';
+		notifIcon = 'task_alt';
+		notifMessage = 'Producto en shopping cart!';
+	} else if (action == 'delete') {
+		notifClass = 'delNotif';
+		notifIcon = 'delete_forever';
+		notifMessage = 'Producto eliminado del shopping cart!';
+	}
 
-// function addToCart(idProduct) {
-// 	let productInCart = cart.find((item) => item.id === idProduct);
+	let newNotif = document.createElement("div");
 
-// 	if (productInCart) {
-// 		let index = cart.findIndex((item) => item.id === productInCart.id);
+	newNotif.innerHTML = `
+	<div class="${notifClass} notif d-flex flex-column justify-self-end ">
+		<div class="notifInner">
+			<span class="material-symbols-outlined">${notifIcon}</span>
+			<p>Producto en shopping cart!</p>
+			<p> ${prodName} </p>
+		</div>
+		<div class="close">
+			<a>Cerrar</a>
+		</div>
+	</div>
+	`;
 
-// 		cart[index].oneMore();
-// 		cart[index].refreshTotalPrice();
-// 	} else {
-// 		cart.push(new Product(products[idProduct], 1));
-// 	}
+	notifContainer.appendChild(newNotif);
 
-// 	swal.fire({
-// 		position: 'top-end',
-// 		icon: 'success',
-// 		title: 'Producto en shopping cart!',
-// 		text: `${products[idProduct].title}`,
-// 		showConfirmButton: false,
-//   		timer: 1500
-// 	});
+	setTimeout(()=>{newNotif.remove()}, 5000);
+}
 
-// 	localStorage.setItem("cartInStorage", JSON.stringify(cart));
-// 	printTable(cart);
-// }
+function getTotalPrice(array) {
+	return array.reduce((total, item) => total + item.totalPrice, 0);
+}
+
+function addToCart(idProduct) {
+	let productInCart = cart.find((item) => item.id === idProduct);
+
+	if (productInCart) {
+		let index = cart.findIndex((item) => item.id === productInCart.id);
+
+		cart[index].oneMore();
+		cart[index].refreshTotalPrice();
+	} else {
+		cart.push(new Product(products[idProduct], 1));
+	}
+
+	notifAlert(`${products[idProduct].title}`,'add')
+
+	// localStorage.setItem("cartInStorage", JSON.stringify(cart));
+	// printTable(cart);
+}
 
 // function deleteFromCart(id) {
 // 	let product = cart.find((product) => product.id === id);
@@ -121,12 +149,12 @@ function loadProducts(JSONproducts) {
 				JSONproducts.push(item);
 			}
 
-			let container = document.getElementById("containerProducts"); // Obtener contenedor de tarjetas de producto
+			let container = document.getElementById("containerProducts");
 			container.innerHTML = "";
 		
 			for (const product of JSONproducts) {
-				let card = document.createElement("div"); // Contenedor individual de cada producto
-				// Agregar contenido de tarjeta de producto
+				let card = document.createElement("div");
+
 				card.innerHTML = `
 				<div class="productCard container">
 					<div class="productOffer">
@@ -163,10 +191,8 @@ function loadProducts(JSONproducts) {
 
 				container.appendChild(card);
 
-				// let cartButton = document.getElementById(`addBtn${product.id}`); // Agregar evento al boton
-				// cartButton.addEventListener("click", () => addToCart(product.id));
-
-
+				let cartButton = document.getElementById(`addBtn${product.id}`);
+				cartButton.addEventListener("click", () => addToCart(product.id));
 			}
 		}
 	}
@@ -239,18 +265,18 @@ function loadProducts(JSONproducts) {
 // 	}
 // }
 
-// function search(e) {
-// 	e.preventDefault();
+function search(e) {
+	e.preventDefault();
 
-// 	let input = document.getElementById("searchForm").value.toLowerCase();
-// 	let research = products.filter((item) => item.title.toLowerCase().includes(input));
-// 	console.log(research);
-// 	printProductsInHTML(research);
-// }
+	let input = document.getElementById("searchForm").value.toLowerCase();
+	let research = products.filter((item) => item.title.toLowerCase().includes(input));
+	console.log(research);
+	printProductsInHTML(research);
+}
 
 /* ---------> Eventos <---------- */
-// let searchbutton = document.getElementById("researchBtn");
-// searchbutton.addEventListener("click", search);
+let searchbutton = document.getElementById("researchBtn");
+searchbutton.addEventListener("click", search);
 
 /* -----> Llamar funciones <----- */
 loadProducts(products);
@@ -264,220 +290,3 @@ loadProducts(products);
 // <div class="cartListInner listInner">
 
 // </div>
-
-
-// $( () => {
-//     $('section').append(grid_container)
-//     $('.grid-container').append(aside)
-//     $('.grid-container').append(cargandoAnimacion)
-//     $('.grid-container').append(grid);
-//     $('.carrito').append(carrito)
-//                 // --------------------------------------//
-//                 // -------------- AGREGAR ---------------//
-//                 // ------------- PRODUCTOS --------------//
-//                 // ------------ AL CARRITO --------------//
-//                 // --------------------------------------//
-//     $('.carritoInner').prepend(noHayProductos);
-//     $('.grid-container').on('click', '.unProducto a.agregar', function(e){
-//         e.stopPropagation();
-//         $('.carritoInner p.noHayProductos').remove()
-//         cero++;
-//         let contador = $('#contador')
-//         //PRECIO EN EL PRODUCTO
-//         let precio = e.currentTarget.nextElementSibling.innerHTML
-//         //NOMBRE EN EL PRODUCTO
-//         let nombre = e.currentTarget.parentElement.parentElement.firstElementChild.innerHTML
-//         let productoDiv = e.currentTarget.parentElement.parentElement
-//         let productoId = $(productoDiv).attr('class').replaceAll('unProducto fadeIn ', '')
-//         //CREAMOS LA NOTIFICACIÓN
-//         crearToast(nombre, precio, 'agregado', 'agregado al')
-//         //EVENTO PARA CERRAR LA NOTIFICACIÓN CON EL BOTON CERRAR EN LA MISMA
-//         botonCerrarToast()
-//         //MOSTRAMOS EL CONTADOR
-//         $(contador).addClass('mostrar');
-//         //LE CAMBIAMOS EL VALOR SEGÚN LAS VECES QUE HIZO CLICK 
-//         contador.html(cero)
-//         //GUARDAMOS LOS PRODUCTOS SELECCIONADOS EN EL LOCAL STORAGE
-//         for (const iterator of productos_data) {
-//             if (iterator.nombre === nombre) {
-//                 sessionStorage.setItem('producto_' + cero, JSON.stringify({iterator}))
-//             }
-//         }
-//         //sessionStorage.setItem('producto_' + cero, JSON.stringify({nombre: nombre, precio: precio,}))
-//         //COMO EL NOMBRE DE LA FOTO ES IGUAL QUE EL NOMBRE DEL PRODUCTO PERO CON _ REMPLAZAMOS
-//         //ESPACIO POR _
-//         let productoImagen = nombre.replaceAll(' ', '_')
-//         //CREAMOS EL PRODUCTO EN EL CARRITO
-//         crearProductoEnCarrito(carrito, nombre, precio, productoImagen, productoId)
-//         //MOSTRAR BOTÓN COMPRAR
-//         $('a.comprar').removeClass('hidden')
-//         //MOSTRAR TOTAL EN CARRITO
-//         let totalString = $('span#precioTotal')[0].innerHTML
-//         var total = parseInt(totalString)
-//         let precioN = parseInt(precio)
-//         var total = total + precioN
-//         $('span#precioTotal')[0].textContent = total
-//     });
-//                 // ---------------------------------------//
-//                 // -------------- QUITAR -----------------//
-//                 // ------------- PRODUCTOS ---------------//
-//                 // ------------ DEL CARRITO --------------//
-//                 // ---------------------------------------//
-//     $('.carritoInner').on('click', 'a.quitar', (e) => {
-//         e.stopPropagation()
-//         let nombre = e.currentTarget.previousElementSibling.firstElementChild.innerHTML
-//         let precio = e.currentTarget.previousElementSibling.lastElementChild.innerHTML
-//         //ANTES DE DISMINUIR CERO UTILIZAMOS SU VALOR PARA 
-//         //REMOVER LOS PRODUCTOS EN SESSION STORAGE
-//         sessionStorage.removeItem('producto_' + cero)
-//         //AGARRAMOS EL CONTADOR
-//         let contador = $('#contador')
-//         //DISMINUIMOS CERO 
-//         cero--
-//         //PASAMOS 0 AL CONTADOR
-//         contador.html(cero)
-//         //REMOVEMOS EL PRODUCTO
-//         e.target.parentElement.remove()
-//         //CUANDO NO HAY PRODUCTOS EN EL CARRITO
-//         if (cero === 0) {
-//             $(contador).removeClass('mostrar');
-//             $('.carritoInner').prepend(noHayProductos)
-//             $('a.comprar').addClass('hidden');
-//         }
-
-//         crearToast(nombre, precio, 'removido', 'removido del')
-//         botonCerrarToast()
-//         let totalString = $('span#precioTotal')[0].innerHTML
-//         var total = parseInt(totalString)
-//         let precioN = parseInt(precio)
-//         $('span#precioTotal')[0].textContent = total - precioN;
-//     });
-    
-
-//                 // --------------------------------------//
-//                 // ------------- MOSTRAR Y --------------//
-//                 // ------------- OCULTAR ----------------//
-//                 // ------------- EL CARRITO -------------//
-//                 // --------------------------------------//
-
-//     $('.carrito').on('click', 'svg', (e) => { 
-//         $('.carritoInner').toggleClass('noMostrar');
-//         $('#carrito').toggleClass('abierto')
-//         e.stopPropagation();
-//     });
-//     //PREVIENE QUE EL CARRITO SE CIERRE CUANDO SE HACE CLIC EN
-//     //DENTRO DEL CARRITO DESPLEGADO
-//     $('.carritoInner').click((e) => {e.stopPropagation();})
-
-//     //CIERRA EL CARRITO CUANDO SE HACE CLIC AFUERA DEL CARRITO
-//     $('body').click((e) => {
-//         let carrito = $('.carritoInner');
-//         if (carrito.hasClass('noMostrar') ) {
-//             //nada
-//         } else {
-//             $('.carritoInner').toggleClass('noMostrar');
-//             $('#carrito').toggleClass('abierto')
-//         }
-//         e.stopPropagation();
-//     })
-
-//                 // --------------------------------------//
-//                 // --------------- BOTÓN ----------------//
-//                 // ---------------- PARA ----------------//
-//                 // --------------- COMPRAR --------------//
-//                 // --------------------------------------//
-//     $('a.comprar').click((e)=> {
-//         cero = 0
-//         $('#contador').removeClass('mostrar')
-//         $('.carrito').hide()
-//         $('section').html('')
-//         $('section').removeClass();
-//         $('section').addClass('container');
-//         $('.carritoInner').remove()
-//         $('section').append(finalizarCompraPage)
-//         let productosEnCarrito = e.target.parentNode.children;
-//         for (const iterator of productosEnCarrito) {
-//             cero++
-//             if ($(iterator).hasClass('carrito-item')) {
-//                 idEnCarrito = iterator.id
-//                 for (const productos of productos_data) {
-//                     if (idEnCarrito === productos.identificador) {
-//                         productosComprados.push(productos)
-//                         sessionStorage.setItem('productoComprado_' + cero, JSON.stringify({productos}))
-//                     }
-//                 }
-//             }
-//         }
-//         cero = 0
-//         precios = []
-//         for (const iterator of productosComprados) {
-//             cero++
-//             let preciosAPushear = iterator.precio * parseInt(dolarOficial())
-//             precios.push(preciosAPushear)
-//             productosEnFinalizarCompra(iterator, $('.productos_finalizarCompra'))
-//         }
-//         let precioTotal = precios.reduce((a, b) => a + b, 0);
-//         $('.total').append('<p>'+precioTotal+'</p>')
-//         let optionsCuotas = [ 1, 3, 6, 12 ];
-//         for (var i = 0; i < optionsCuotas.length; i++) {
-//             funcionCuotas(precioTotal, i, optionsCuotas[i])
-//         }
-//         productosCompradosPrecioTotal.push(precioTotal)
-//     });
-
-//                 // ----------------------------------------//
-//                 // ---------------- BOTÓN -----------------//
-//                 // ----------------- PARA -----------------//
-//                 // --------------- FINALIZAR --------------//
-//                 // ---------------- COMPRA ----------------//
-//                 // ----------------------------------------//
-
-//     $('body').on('submit', '.finalizarCompraForm', function(e){
-
-//         let nombre =  e.target[0].value;
-//         let email =  e.target[1].value;
-//         let tel =  e.target[2].value;
-//         let cuotas =  e.target[3].value.replaceAll('_', ' Cuotas de: $');
-//         let creditCardNumber =  e.target[4].value;
-//         let creditCardName =  e.target[5].value;
-//         let creditCardCVC =  e.target[6].value;
-//         let creditCardDesde =  e.target[7].value;
-//         let credictCardHasta =  e.target[8].value;
-//         let url = "https://jsonplaceholder.typicode.com/posts";
-//         new Cliente (nombre, email, tel, productosComprados)
-        
-//         // SIMULACIÓN DE AJAX POST
-//         $.ajax({
-//             url: url,
-//             type: 'POST',
-//             data: {
-//                 nombre: nombre,
-//                 email: email,
-//                 tel: tel,
-//                 cuotas: cuotas,
-//                 creditCardNumber: creditCardNumber,
-//                 creditCardName: creditCardName,
-//                 creditCardCVC: creditCardCVC,
-//                 creditCardDesde: creditCardDesde,
-//                 credictCardHasta: credictCardHasta,
-//                 dataProductosComprados: productosComprados,
-//                 dataPrecioTotal: productosCompradosPrecioTotal[0],
-//             },
-//             beforeSend: function() {
-//                 $('.finalizarCompra').html('')
-//                 $('.finalizarCompra').addClass('compraFinalizada')
-//                 $('.finalizarCompra.compraFinalizada').removeClass('finalizarCompra')
-//                 $(cargandoAnimacion).removeClass('col-md-10');
-//                 $(cargandoAnimacion).addClass('col-md-12');
-//                 $('.compraFinalizada').append(cargandoAnimacion)
-//                 $('#loader').removeClass('hidden')
-//             },
-//             success: function (data) {
-//                 compraRealizadaConExito(data)
-//             },
-//             complete: function () { 
-//                 $('#loader').addClass('hidden')
-//             }
-//         });
-//     });
-// });
