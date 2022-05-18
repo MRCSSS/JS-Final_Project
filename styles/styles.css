@@ -513,6 +513,7 @@ td {
 
 /* ----------------  > LAYOUT <  ---------------- */
 body {
+  background-color: #041100;
   background-image: url(../img/background.jpg);
   background-attachment: scroll;
   background-position: center;
