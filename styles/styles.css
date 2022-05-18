@@ -292,17 +292,16 @@ td {
 /* -----------------  > BASE <  ----------------- */
 /* --------------  > COMPONENTS <  -------------- */
 .searchInput[type=text] {
-  max-width: 600px;
   width: 90%;
   margin: 10px 5px;
   padding: 8px 15px;
   font-family: "Merriweather", serif;
-  border: 2px solid transparent;
+  border: 1px solid #890F06;
   border-radius: 5px;
 }
 
 .searchInput[type=text]:focus {
-  border: 2px solid #FFCB1F;
+  border: 3px solid #FFCB1F;
 }
 
 .button {
@@ -324,14 +323,14 @@ td {
   background-color: #d6ab1a;
 }
 
-.product__card {
+.productCard {
   margin: 22px;
   height: 425px;
   width: 310px;
   background-color: #8CAEA6;
   border-radius: 5px;
 }
-.product__card .product__offer {
+.productCard .productOffer {
   z-index: 2;
   border-top: 20px solid #FFCB1F;
   border-bottom: 20px solid #FFCB1F;
@@ -343,48 +342,49 @@ td {
   height: 35px;
   width: 110px;
 }
-.product__card .product__offer span {
+.productCard .productOffer span {
   position: relative;
-  top: -9px;
+  top: -14px;
   left: -68px;
   color: rgba(20, 54, 19, 0.9);
   font-family: "Black Ops One", cursive;
   font-size: 20px;
   text-shadow: 1px 1px 2px rgba(137, 15, 6, 0.8);
 }
-.product__card .product__slider {
+.productCard .productSlider {
   position: relative;
   top: -40px;
   z-index: 1;
 }
-.product__card .product__likeHeart {
+.productCard .productLikeHeart {
+  z-index: 3;
   position: relative;
   top: -70px;
   left: 265px;
   background-color: transparent;
 }
-.product__card .product__likeHeart .material-symbols-outlined {
+.productCard .productLikeHeart .material-symbols-outlined {
   color: #890F06;
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
 }
-.product__card .product__likeHeart:hover {
+.productCard .productLikeHeart:hover {
   transform: scale(1.2);
 }
-.product__card .product__likeHeart:active {
+.productCard .productLikeHeart:active {
   transform: scale(1.1);
 }
-.product__card .product__likeHeart:active .material-symbols-outlined {
+.productCard .productLikeHeart:active .material-symbols-outlined {
   font-variation-settings: "FILL" 1;
 }
-.product__card .product__description {
+.productCard .productDescription {
   position: relative;
-  top: -55px;
+  top: -65px;
   left: 15px;
   overflow: hidden;
   white-space: nowrap;
   width: 280px;
 }
-.product__card .product__description .product__title {
+.productCard .productDescription .productTitle {
   color: #041100;
   text-shadow: 2px 1px 3px #041100;
   font-family: "Oswald", sans-serif;
@@ -392,11 +392,10 @@ td {
   word-spacing: 4px;
   font-size: 16px;
 }
-.product__card .product__description .product__price {
-  margin-top: 10px;
+.productCard .productDescription .productPrice {
   align-content: center;
 }
-.product__card .product__description .product__price .product__price--sale {
+.productCard .productDescription .productPrice .productPrice--sale {
   font-family: "Black Ops One", cursive;
   display: inline-block;
   padding: 2px;
@@ -404,32 +403,33 @@ td {
   color: #890F06;
   text-shadow: 2px 2px 2px #013d01;
 }
-.product__card .product__description .product__price .product__price--regular {
+.productCard .productDescription .productPrice .productPrice--regular {
   font-family: "Alfa Slab One", cursive;
   display: inline-block;
   text-decoration: line-through;
   font-size: 12px;
   color: rgba(20, 54, 19, 0.6);
 }
-.product__card .product__addToCart {
+.productCard .productAddToCart {
   position: relative;
-  top: -45px;
-  left: 30px;
+  top: -72px;
+  left: 15px;
   display: flex;
   align-items: center;
-  width: 280px;
+  width: 290px;
 }
-.product__card .product__addToCart .product__addToCart--text {
-  color: #890F06;
+.productCard .productAddToCart .productAddToCart--text {
+  font-size: 20px;
+  color: #FFCB1F;
   font-family: "Alfa Slab One", cursive;
   display: inline-block;
-  padding-right: 20px;
+  padding-right: 10px;
   text-shadow: 2px 2px 1px rgba(20, 54, 19, 0.9);
 }
-.product__card .product__addToCart .product__addToCart--btn {
+.productCard .productAddToCart .productAddToCart--btn {
   display: inline-block;
 }
-.product__card .product__addToCart .product__addToCart--btn .material-symbols-outlined {
+.productCard .productAddToCart .productAddToCart--btn .material-symbols-outlined {
   color: #143613;
 }
 
@@ -437,11 +437,11 @@ td {
   height: 300px;
   width: 300px;
 }
-.slider .slider__list {
+.slider .slideList {
   position: relative;
   padding: 10px;
 }
-.slider .slider__list .slide {
+.slider .slideList .slide {
   display: flex;
   flex-flow: row wrap;
   align-content: flex-end;
@@ -449,14 +449,14 @@ td {
   opacity: 0;
   transition: opacity 0.5s;
 }
-.slider .slider__list .slide img {
+.slider .slideList .slide img {
   max-height: 290px;
   object-fit: cover;
 }
-.slider .slider__list .slide1 {
+.slider .slideList .slide1 {
   opacity: 1;
 }
-.slider .slider__list .slide:hover {
+.slider .slideList .slide:hover {
   opacity: 1;
 }
 
@@ -523,8 +523,11 @@ body {
 body header nav {
   z-index: 10;
 }
+body section {
+  padding-top: 100px;
+}
 body section .searchForm {
-  padding-top: 90px;
+  padding-bottom: 50px;
 }
 body section .searchForm .searchInput {
   max-width: 1300px;
@@ -535,22 +538,21 @@ body section .searchForm .searchButton {
   width: 45px;
   height: 35px;
 }
-body section .productsGrid {
-  max-width: 1415px;
+body section .gridContainer {
+  background-color: #143613;
+  border: solid 2px #FFCB1F;
+  border-radius: 10px;
+  max-width: 1600px;
+  box-shadow: 10px 10px 6px rgba(137, 15, 6, 0.5);
 }
-body section .productsGrid .productTitle {
-  text-align: center;
+body section .gridContainer h2 {
   padding: 15px;
   font-family: "Black Ops One", cursive;
   color: #FFCB1F;
   font-size: 30px;
   text-align: center;
   text-shadow: 5px 4px 2px #890f06;
-}
-body section .productsGrid #container__products {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  height: 45px;
 }
 
 /*# sourceMappingURL=styles.css.map */

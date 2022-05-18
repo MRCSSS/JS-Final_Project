@@ -15,8 +15,10 @@ body {
         }          
     }
     section {
+        padding-top: 100px;
+
         .searchForm {
-            padding-top: 90px;
+            padding-bottom: 50px;
             .searchInput {
                 max-width: 1300px;
                 margin-top: 0;
@@ -26,28 +28,30 @@ body {
                 width: 45px;
                 height: 35px;
             }
-        }    
-        .productsGrid {
-            max-width: 1415px;
-            .productTitle { 
-                text-align: center;
+        }
+        .gridContainer {
+            background-color: $fondoMedio;
+            border: solid 2px $contraste1;
+            border-radius: 10px;
+            max-width: 1600px;
+            box-shadow: 10px 10px 6px rgba($color: $contraste2, $alpha: 0.5);
+            h2 {
                 padding: 15px;
                 font-family: $titulo;
                 color: $contraste1;
                 font-size: 30px;
                 text-align: center;
                 text-shadow: 5px 4px 2px rgba($color: $contraste2, $alpha: 1);
-    
+                height: 45px;
             }
-            #container__products {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: space-around;
+        }
+        .productsGrid {
+            .containerProducts {
 
             }
         }
-    }
-    footer {
-        
+        .shopGrid {
+
+        }
     }
 }

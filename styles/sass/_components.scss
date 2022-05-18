@@ -8,17 +8,16 @@
 }
 // --------- > FORMS < -----------
 .searchInput[type=text]{
-    max-width: 600px;
+    // max-width: 600px;
     width: 90%;
     margin: 10px 5px;
     padding: 8px 15px;
     font-family: $italica;
-    border: 2px solid transparent;
+    border: 1px solid $contraste2;
     border-radius: 5px;
-
 }
 .searchInput[type=text]:focus {
-    border: 2px solid $contraste1;
+    border: 3px solid $contraste1;
   }
 
 // --------- > BUTTONS < ---------
@@ -42,29 +41,13 @@
 
 
 // ------ > PRODUCT CARD < -------
-// .products__filters {
-//     h2 {
-
-//     }
-//     .product__filter {
-//         h4 {
-
-//         }
-//         .filter__checklist {
-            
-//         }
-//     }
-
-
-// }
-    // ------ > PRODUCT CARD < -------
-.product__card {
+.productCard {
     margin: 22px;
     height: 425px;
     width: 310px;
     background-color: $fondoContraste;
     border-radius: 5px;
-    .product__offer {
+    .productOffer {
         z-index: 2;
         border-top: 20px solid $contraste1;
         border-bottom: 20px solid $contraste1;
@@ -77,7 +60,7 @@
         width: 110px;
         span {
             position: relative;
-            top: -9px;
+            top: -14px;
             left: -68px;
             color: rgba($fondoMedio,0.9);
             font-family: $titulo;
@@ -85,12 +68,13 @@
             text-shadow: 1px 1px 2px rgba($contraste2, 0.8);
         }
     }
-    .product__slider {
+    .productSlider {
         position: relative;
         top: -40px;
         z-index: 1;
     }
-    .product__likeHeart {
+    .productLikeHeart {
+        z-index: 3;
         position: relative;
         top: -70px;
         left: 265px;
@@ -104,10 +88,10 @@
                 'opsz' 48
         }
     }
-    .product__likeHeart:hover {
+    .productLikeHeart:hover {
         transform: scale(1.2);
     }
-    .product__likeHeart:active {
+    .productLikeHeart:active {
         transform: scale(1.1);
         .material-symbols-outlined {
             font-variation-settings:
@@ -115,15 +99,15 @@
         }
     }
 
-    .product__description {
+    .productDescription {
         position: relative;
-        top: -55px;
+        top: -65px;
         left: 15px;
         overflow: hidden;
         white-space: nowrap;
         width: 280px;
 
-        .product__title {
+        .productTitle {
             color: $fondoObscuro;
             text-shadow: 2px 1px 3px $fondoObscuro;
             font-family: $delgada;
@@ -131,10 +115,10 @@
             word-spacing: 4px;
             font-size: 16px;
         }
-        .product__price {
-            margin-top: 10px;
+        .productPrice {
+            // margin-top: 10px;
             align-content: center;
-            .product__price--sale {
+            .productPrice--sale {
                 font-family: $titulo;
                 display: inline-block;
                 padding: 2px;
@@ -142,7 +126,7 @@
                 color: $contraste2;
                 text-shadow: 2px 2px 2px $fondoClaro;
             }
-            .product__price--regular {
+            .productPrice--regular {
                 font-family: $subtitulo;
                 display: inline-block;
                 text-decoration: line-through;
@@ -152,21 +136,22 @@
         }
 
     }
-    .product__addToCart {
+    .productAddToCart {
         position: relative;
-        top: -45px;
-        left: 30px;
+        top: -72px;
+        left: 15px;
         display: flex;
         align-items: center;
-        width: 280px;
-        .product__addToCart--text {
-            color: $contraste2;
+        width: 290px;
+        .productAddToCart--text {
+            font-size: 20px;
+            color: $contraste1;
             font-family: $subtitulo;
             display: inline-block;
-            padding-right: 20px;
+            padding-right: 10px;
             text-shadow: 2px 2px 1px rgba($fondoMedio,0.9);
         }
-        .product__addToCart--btn {
+        .productAddToCart--btn {
             display: inline-block;
             .material-symbols-outlined {
                 color: $fondoMedio;
@@ -179,7 +164,7 @@
 .slider {
     height: 300px;
     width: 300px;
-    .slider__list {
+    .slideList {
         position: relative;
         padding: 10px;
         .slide {
