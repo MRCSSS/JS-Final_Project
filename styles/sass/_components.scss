@@ -7,17 +7,17 @@
     
 }
 // --------- > FORMS < -----------
-.searchForm[type=text]{
+.searchInput[type=text]{
     max-width: 600px;
-    // width: 100%;
-    margin: 15px 5px;
+    width: 90%;
+    margin: 10px 5px;
     padding: 8px 15px;
     font-family: $italica;
     border: 2px solid transparent;
     border-radius: 5px;
 
 }
-.searchForm[type=text]:focus {
+.searchInput[type=text]:focus {
     border: 2px solid $contraste1;
   }
 

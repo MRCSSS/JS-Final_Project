@@ -291,16 +291,17 @@ td {
 
 /* -----------------  > BASE <  ----------------- */
 /* --------------  > COMPONENTS <  -------------- */
-.searchForm[type=text] {
+.searchInput[type=text] {
   max-width: 600px;
-  margin: 15px 5px;
+  width: 90%;
+  margin: 10px 5px;
   padding: 8px 15px;
   font-family: "Merriweather", serif;
   border: 2px solid transparent;
   border-radius: 5px;
 }
 
-.searchForm[type=text]:focus {
+.searchInput[type=text]:focus {
   border: 2px solid #FFCB1F;
 }
 
@@ -522,24 +523,22 @@ body header nav {
   z-index: 10;
 }
 body section .searchForm {
-  max-width: 1000px;
-  padding-top: 100px;
-  padding-left: 5%;
-  padding-right: 5%;
-  align-items: center;
+  padding-top: 90px;
 }
 body section .searchForm .searchInput {
+  max-width: 1300px;
+  margin-top: 0;
   height: 35px;
 }
 body section .searchForm .searchButton {
-  display: inline-block;
-  margin-top: 14px;
   width: 45px;
+  height: 35px;
 }
-body section .products {
+body section .productsGrid {
   max-width: 1415px;
 }
-body section .products .products__title {
+body section .productsGrid .productTitle {
+  text-align: center;
   padding: 15px;
   font-family: "Black Ops One", cursive;
   color: #FFCB1F;
@@ -547,7 +546,7 @@ body section .products .products__title {
   text-align: center;
   text-shadow: 5px 4px 2px #890f06;
 }
-body section .products #container__products {
+body section .productsGrid #container__products {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;

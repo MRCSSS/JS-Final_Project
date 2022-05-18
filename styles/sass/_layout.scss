@@ -15,27 +15,21 @@ body {
     }
     section {
         .searchForm {
-            max-width: 1000px;
-            padding-top: 100px;
-            padding-left: 5%;
-            padding-right: 5%;
-            align-items: center;
-            // display: flex;
-            // margin-left: 28%;
+            padding-top: 90px;
             .searchInput {
+                max-width: 1300px;
+                margin-top: 0;
                 height: 35px;
             }
             .searchButton {
-                display: inline-block;
-                margin-top: 14px;
                 width: 45px;
+                height: 35px;
             }
-            // }
         }    
-        .products {
-            // padding-top: 55px;
+        .productsGrid {
             max-width: 1415px;
-            .products__title { 
+            .productTitle { 
+                text-align: center;
                 padding: 15px;
                 font-family: $titulo;
                 color: $contraste1;
