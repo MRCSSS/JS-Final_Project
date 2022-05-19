@@ -5,8 +5,8 @@
 		"salePrice": 180,
         "regularPrice": 220,
 		"offer": 10,
-		"img1": "../img/products/mouse1.jpeg",
-        "img2": "../img/products/mouse2.jpeg"
+		"img1": "img/products/mouse1.jpeg",
+        "img2": "img/products/mouse2.jpeg"
 	},
 	{
         "id": 1,
@@ -14,8 +14,8 @@
 		"salePrice": 650,
         "regularPrice": 700,
 		"offer": 5,
-		"img1": "../img/products/mousepad1.png",
-        "img2": "../img/products/mousepad2.png"
+		"img1": "img/products/mousepad1.png",
+        "img2": "img/products/mousepad2.png"
 	},
 	{
         "id": 2,
@@ -23,7 +23,7 @@
 		"salePrice": 4000,
         "regularPrice": 5000,
 		"offer": 20,
-		"img1": "../img/products/desk1.jpg",
-        "img2": "../img/products/desk2.jpg"
+		"img1": "img/products/desk1.jpg",
+        "img2": "img/products/desk2.jpg"
 	}
 ]
