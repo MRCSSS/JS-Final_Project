@@ -12,17 +12,6 @@
     box-shadow: 15px 15px 3px rgba($contraste2, 0.4);
     animation: hideNotif linear $notifTime;
     position: relative;
-    .close{
-        z-index: 101;
-        cursor: pointer;
-        text-align: right;
-        margin-top: 2px;
-        margin-right: 2px;
-        .material-symbols-outlined{
-            font-size: 20px;
-            color: #bdbdbd;
-        }
-    }
     .notifInner {
         position: relative;
         top: 10px;
@@ -265,16 +254,18 @@
             a {
                 text-decoration: none;
                 h1 {
+                    position: relative;
+                    top: -15px;
                     font-family: $titulo;
                     color: $contraste1;
                     font-size: 35px;
                     text-align: center;
                     text-shadow: 5px 4px 2px rgba($color: $contraste2, $alpha: 1);
-                    .logo {
-                        overflow: hidden;
-                        height: 45px;
-                        width: 45px;
-                    }
+                    // .logo {
+                    //     overflow: hidden;
+                    //     height: 45px;
+                    //     width: 45px;
+                    // }
                 }
             }
         }
@@ -309,8 +300,14 @@
                     color: #ffffff;
                 }
 
-                .cartTable {
+                #cartTable.hide {
+                    opacity: 0 !important; 
+                }
+
+                #cartTable {
                     position: fixed;
+                    transform: translateX(0);
+                    opacity: 1;
                     top: 78px;
                     right: 20px;
                     max-height: 90%;

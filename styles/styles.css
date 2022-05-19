@@ -301,17 +301,6 @@ td {
   animation: hideNotif linear 6s;
   position: relative;
 }
-.notif .close {
-  z-index: 101;
-  cursor: pointer;
-  text-align: right;
-  margin-top: 2px;
-  margin-right: 2px;
-}
-.notif .close .material-symbols-outlined {
-  font-size: 20px;
-  color: #bdbdbd;
-}
 .notif .notifInner {
   position: relative;
   top: 10px;
@@ -563,16 +552,13 @@ td {
   text-decoration: none;
 }
 .navbar .container .principalLogo a h1 {
+  position: relative;
+  top: -15px;
   font-family: "Black Ops One", cursive;
   color: #FFCB1F;
   font-size: 35px;
   text-align: center;
   text-shadow: 5px 4px 2px #890f06;
-}
-.navbar .container .principalLogo a h1 .logo {
-  overflow: hidden;
-  height: 45px;
-  width: 45px;
 }
 .navbar .container .cartList {
   padding-left: 35px;
@@ -604,8 +590,13 @@ td {
   justify-content: center;
   color: #ffffff;
 }
-.navbar .container .cartList .cart .cartTable {
+.navbar .container .cartList .cart #cartTable.hide {
+  opacity: 0 !important;
+}
+.navbar .container .cartList .cart #cartTable {
   position: fixed;
+  transform: translateX(0);
+  opacity: 1;
   top: 78px;
   right: 20px;
   max-height: 90%;
@@ -614,11 +605,11 @@ td {
   border-radius: 5px;
   box-shadow: 15px 15px 2px rgba(137, 15, 6, 0.4);
 }
-.navbar .container .cartList .cart .cartTable .cartItem {
+.navbar .container .cartList .cart #cartTable .cartItem {
   border-bottom: solid 1px rgba(4, 17, 0, 0.5);
   margin: 15px 0 0 0;
 }
-.navbar .container .cartList .cart .cartTable .cartItem .material-symbols-outlined {
+.navbar .container .cartList .cart #cartTable .cartItem .material-symbols-outlined {
   padding-top: 3px;
   background-color: transparent !important;
   text-shadow: 0 0 0 transparent !important;
@@ -626,53 +617,53 @@ td {
   font-size: 25px;
   font-variation-settings: "FILL" 1, "wght" 600, "GRAD" 0, "opsz" 48;
 }
-.navbar .container .cartList .cart .cartTable .cartItem .material-symbols-outlined:active {
+.navbar .container .cartList .cart #cartTable .cartItem .material-symbols-outlined:active {
   box-shadow: 0 0 0 transparent !important;
 }
-.navbar .container .cartList .cart .cartTable .cartItem .cartTableTile {
+.navbar .container .cartList .cart #cartTable .cartItem .cartTableTile {
   margin: 0;
   font-size: 17px;
 }
-.navbar .container .cartList .cart .cartTable .cartItem p {
+.navbar .container .cartList .cart #cartTable .cartItem p {
   font-family: "Oswald", sans-serif;
   font-size: 15px;
 }
-.navbar .container .cartList .cart .cartTable .cartItem .tableNameTitle {
+.navbar .container .cartList .cart #cartTable .cartItem .tableNameTitle {
   width: 120px;
   margin-right: 15px;
 }
-.navbar .container .cartList .cart .cartTable .cartItem .tablePriceTitle {
+.navbar .container .cartList .cart #cartTable .cartItem .tablePriceTitle {
   width: 70px;
 }
-.navbar .container .cartList .cart .cartTable .cartItem .tableSubTitle {
+.navbar .container .cartList .cart #cartTable .cartItem .tableSubTitle {
   width: 70px;
 }
-.navbar .container .cartList .cart .cartTable .cartItem .tableCantTitle {
+.navbar .container .cartList .cart #cartTable .cartItem .tableCantTitle {
   width: 70px;
 }
-.navbar .container .cartList .cart .cartTable .cartItem .tableCantTitle .cantBtn {
+.navbar .container .cartList .cart #cartTable .cartItem .tableCantTitle .cantBtn {
   margin: 0;
   font-size: 20px;
 }
-.navbar .container .cartList .cart .cartTable .cartItem .tableCantTitle p {
+.navbar .container .cartList .cart #cartTable .cartItem .tableCantTitle p {
   text-align: center;
   height: 25px;
   width: 15px;
   border: solid 1px;
 }
-.navbar .container .cartList .cart .cartTable .cartItem .tableDelTitle {
+.navbar .container .cartList .cart #cartTable .cartItem .tableDelTitle {
   position: relative;
   top: -9px;
   width: 40px;
 }
-.navbar .container .cartList .cart .cartTable .cartTitles {
+.navbar .container .cartList .cart #cartTable .cartTitles {
   margin: 0;
 }
-.navbar .container .cartList .cart .cartTable .cartInner .cartItem {
+.navbar .container .cartList .cart #cartTable .cartInner .cartItem {
   border-bottom: solid 1px rgba(4, 17, 0, 0.5);
   margin: 15px 0 0 0;
 }
-.navbar .container .cartList .cart .cartTable .cartInner .cartItem .material-symbols-outlined {
+.navbar .container .cartList .cart #cartTable .cartInner .cartItem .material-symbols-outlined {
   padding-top: 3px;
   background-color: transparent !important;
   text-shadow: 0 0 0 transparent !important;
@@ -680,64 +671,64 @@ td {
   font-size: 25px;
   font-variation-settings: "FILL" 1, "wght" 600, "GRAD" 0, "opsz" 48;
 }
-.navbar .container .cartList .cart .cartTable .cartInner .cartItem .material-symbols-outlined:active {
+.navbar .container .cartList .cart #cartTable .cartInner .cartItem .material-symbols-outlined:active {
   box-shadow: 0 0 0 transparent !important;
 }
-.navbar .container .cartList .cart .cartTable .cartInner .cartItem .cartTableTile {
+.navbar .container .cartList .cart #cartTable .cartInner .cartItem .cartTableTile {
   margin: 0;
   font-size: 17px;
 }
-.navbar .container .cartList .cart .cartTable .cartInner .cartItem p {
+.navbar .container .cartList .cart #cartTable .cartInner .cartItem p {
   font-family: "Oswald", sans-serif;
   font-size: 15px;
 }
-.navbar .container .cartList .cart .cartTable .cartInner .cartItem .tableNameTitle {
+.navbar .container .cartList .cart #cartTable .cartInner .cartItem .tableNameTitle {
   width: 120px;
   margin-right: 15px;
 }
-.navbar .container .cartList .cart .cartTable .cartInner .cartItem .tablePriceTitle {
+.navbar .container .cartList .cart #cartTable .cartInner .cartItem .tablePriceTitle {
   width: 70px;
 }
-.navbar .container .cartList .cart .cartTable .cartInner .cartItem .tableSubTitle {
+.navbar .container .cartList .cart #cartTable .cartInner .cartItem .tableSubTitle {
   width: 70px;
 }
-.navbar .container .cartList .cart .cartTable .cartInner .cartItem .tableCantTitle {
+.navbar .container .cartList .cart #cartTable .cartInner .cartItem .tableCantTitle {
   width: 70px;
 }
-.navbar .container .cartList .cart .cartTable .cartInner .cartItem .tableCantTitle .cantBtn {
+.navbar .container .cartList .cart #cartTable .cartInner .cartItem .tableCantTitle .cantBtn {
   margin: 0;
   font-size: 20px;
 }
-.navbar .container .cartList .cart .cartTable .cartInner .cartItem .tableCantTitle p {
+.navbar .container .cartList .cart #cartTable .cartInner .cartItem .tableCantTitle p {
   text-align: center;
   height: 25px;
   width: 15px;
   border: solid 1px;
 }
-.navbar .container .cartList .cart .cartTable .cartInner .cartItem .tableDelTitle {
+.navbar .container .cartList .cart #cartTable .cartInner .cartItem .tableDelTitle {
   position: relative;
   top: -9px;
   width: 40px;
 }
-.navbar .container .cartList .cart .cartTable .cartInner h5 {
+.navbar .container .cartList .cart #cartTable .cartInner h5 {
   margin-top: 8px;
   margin-bottom: 8px;
   color: rgba(20, 54, 19, 0.8);
   font-family: "Black Ops One", cursive;
   text-align: right;
 }
-.navbar .container .cartList .cart .cartTable .cartInner h5 span {
+.navbar .container .cartList .cart #cartTable .cartInner h5 span {
   color: rgba(137, 15, 6, 0.7);
 }
-.navbar .container .cartList .cart .cartTable .cartInner .cartButtons {
+.navbar .container .cartList .cart #cartTable .cartInner .cartButtons {
   font-size: 20px;
 }
-.navbar .container .cartList .cart .cartTable .cartInner .cartButtons #deleteCart {
+.navbar .container .cartList .cart #cartTable .cartInner .cartButtons #deleteCart {
   color: #FFFFFF;
   background-color: #e74c3c !important;
   width: 120px;
 }
-.navbar .container .cartList .cart .cartTable .cartInner .cartButtons #toPay {
+.navbar .container .cartList .cart #cartTable .cartInner .cartButtons #toPay {
   color: #FFFFFF;
   background-color: #07bc0c !important;
 }

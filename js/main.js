@@ -27,15 +27,6 @@ class Product {
 	}
 }
 
-class Buyer {
-	constructor(name, email, phone, whislist) {
-		this.name = name;
-		this.email = email;
-		this.phone = phone;
-		this.whislist = whislist;
-	}
-}
-
 /* --> Constantes y variables <-- */
 var products = [];
 let cart = [];
@@ -79,12 +70,48 @@ function notifAlert (prodName, action) {
 }
 
 function goToPay() {
+	Swal.fire({
+		icon: 'error',
+		title: 'Lo sentimos!!!',
+		text: 'No es posible realizar el pago',
+		footer: `Este es un sitio incompleto, que sirve de práctica para el desarrollo web usando JavaScript.
+		Esperamos que la experiencia cumpla sus espectativas hasta este punto.`
+	})
+}
+
+function showShoppingCart(e) {
+	e.stopPropagation();
+
+	let sCart = document.getElementById("cartTable");
+
+	// sCart.toggleClass('hide');
+	if (sCart.className == "hide") {
+		sCart.className = "";
+	} else {
+		sCart.className = "hide";
+	}
 
 }
+
+function hideShoppingCart(e) {
+	e.stopPropagation();
+
+	let shopCart = document.getElementById("cartTable");
+
+	if (shopCart.className == "hide") {
+		//nada
+	} else {
+		shopCart.className = "hide";
+	}
+}
+
+function noHide(e) {e.stopPropagation();}
 
 function countCartItems(array){
 	let counter = document.getElementById('counter');
 	let count = array.reduce((total, item) => total + item.quantity, 0);
+	let sC = document.getElementById("cartTable");
+
 
 	counter.innerText = count;
 
@@ -92,6 +119,8 @@ function countCartItems(array){
 		counter.className = "counter show";
 	} else {
 		counter.className = "counter";
+		sC.className = "hide";
+		notifAlert('VACÍO','empty');
 	}
 
 }
@@ -208,9 +237,6 @@ function loadProducts(JSONproducts) {
 
 	http.open('GET', 'data/products.json', true);
 	http.send();
-
-
-    // }
 }
 
 function addToCartTable(array) {
@@ -266,6 +292,17 @@ function cartInStorage() {
 		addToCartTable(cart);
 	}
 }
+
+/* ---------> Eventos <---------- */
+let cartIcon = document.getElementById("shoppingCartIcon");
+cartIcon.addEventListener("click", showShoppingCart);
+
+let body = document.getElementById("body");
+body.addEventListener("click", hideShoppingCart);
+
+let cartNoHide = document.getElementById("cartTable");
+cartNoHide.addEventListener("click", noHide);
+
 
 /* -----> Llamar funciones <----- */
 loadProducts(products);
