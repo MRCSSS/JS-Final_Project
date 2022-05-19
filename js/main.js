@@ -79,7 +79,7 @@ function notifAlert (prodName, action) {
 }
 
 function goToPay() {
-	
+
 }
 
 function countCartItems(array){
@@ -206,7 +206,7 @@ function loadProducts(JSONproducts) {
 		}
 	}
 
-	http.open('GET', '../data/products.json', true);
+	http.open('GET', 'data/products.json', true);
 	http.send();
 
 
