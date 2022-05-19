@@ -10,6 +10,8 @@ class Product {
         this.img2 = product.img2;
 		this.quantity = quantity;
 		this.totalPrice = product.totalPrice;
+
+		this.refreshTotalPrice();
 	}
 
 	oneMore() {
@@ -37,7 +39,6 @@ class Buyer {
 /* --> Constantes y variables <-- */
 var products = [];
 let cart = [];
-let favList = [];
 
 /* -> Declaración de funciones <- */
 function notifAlert (prodName, action) {
@@ -52,30 +53,51 @@ function notifAlert (prodName, action) {
 	} else if (action == 'delete') {
 		notifClass = 'delNotif';
 		notifIcon = 'delete_forever';
-		notifMessage = 'Producto eliminado del shopping cart!';
-	}
+		notifMessage = 'Eliminado de shopping cart!';
+	} else if (action == 'empty') {
+		notifClass = 'delNotif';
+		notifIcon = 'delete_sweep';
+		notifMessage = 'Shopping cart';
+	} 
 
 	let newNotif = document.createElement("div");
 
 	newNotif.innerHTML = `
 	<div class="${notifClass} notif d-flex flex-column justify-self-end ">
-		<div class="notifInner">
+		<div class="notifInner d-flex flex-column justify-content-center align-items-center">
 			<span class="material-symbols-outlined">${notifIcon}</span>
-			<p>Producto en shopping cart!</p>
-			<p> ${prodName} </p>
+			<p class="notifText">${notifMessage}</p>
+			<p class="notifProduct"> ${prodName} </p>
 		</div>
-		<div class="close">
-			<a>Cerrar</a>
-		</div>
+		<div class="notifTimeBarProgress"></div>
 	</div>
 	`;
 
 	notifContainer.appendChild(newNotif);
 
-	setTimeout(()=>{newNotif.remove()}, 5000);
+	setTimeout(()=>{newNotif.remove()}, 6600);
+}
+
+function goToPay() {
+	
+}
+
+function countCartItems(array){
+	let counter = document.getElementById('counter');
+	let count = array.reduce((total, item) => total + item.quantity, 0);
+
+	counter.innerText = count;
+
+	if (count > 0) {
+		counter.className = "counter show";
+	} else {
+		counter.className = "counter";
+	}
+
 }
 
 function getTotalPrice(array) {
+	countCartItems(array);
 	return array.reduce((total, item) => total + item.totalPrice, 0);
 }
 
@@ -89,55 +111,45 @@ function addToCart(idProduct) {
 		cart[index].refreshTotalPrice();
 	} else {
 		cart.push(new Product(products[idProduct], 1));
+		
 	}
 
 	notifAlert(`${products[idProduct].title}`,'add')
 
-	// localStorage.setItem("cartInStorage", JSON.stringify(cart));
-	// printTable(cart);
+	localStorage.setItem("cartInStorage", JSON.stringify(cart));
+	addToCartTable(cart);
 }
 
-// function deleteFromCart(id) {
-// 	let product = cart.find((product) => product.id === id);
+function deleteFromCart(id) {
+	let product = cart.find((product) => product.id === id);
+	let index = cart.findIndex((element) => element.id === product.id);
 
-// 	let index = cart.findIndex((element) => element.id === product.id);
+	if (product.quantity > 1) {
+		cart[index].oneLess();
+		cart[index].refreshTotalPrice();
+	} else {
+		cart.splice(index, 1);
+	}
 
-// 	if (product.quantity > 1) {
-// 		cart[index].oneLess();
-// 		cart[index].refreshTotalPrice();
-// 	} else {
-// 		cart.splice(index, 1);
-// 	}
+	// counter.className = "counter";
 
-// 	swal.fire({
-// 		position: 'top-end',
-// 		icon: 'error',
-// 		title: 'Producto eliminado del shopping cart!',
-// 		text: '',
-// 		showConfirmButton: false,
-//   		timer: 1500
-// 	});
+	notifAlert(`${products[id].title}`,'delete')
 
-// 	localStorage.setItem("cartInStorage", JSON.stringify(cart));
-// 	printTable(cart);
-// }
+	localStorage.setItem("cartInStorage", JSON.stringify(cart));
+	addToCartTable(cart);
+}
 
-// function deleteCart() {
-// 	cart = [];
-// 	localStorage.removeItem("cartInStorage");
+function deleteCart() {
+	notifAlert('VACÍO','empty');
 
-// 	document.getElementById("cart").innerHTML = "";
-// 	document.getElementById("actions__cart").innerHTML = "";
+	countCartItems([]);
 
-// 	swal.fire({
-// 		icon: 'warning',
-// 		title: 'Shopping cart vacío!',
-// 		text: '',
-// 		showConfirmButton: false,
-//   		timer: 1500
-// 	});
+	cart = [];
+	localStorage.removeItem("cartInStorage");
 
-// }
+	document.getElementById("cartInner").innerHTML = "";
+	document.getElementById("actionCart").innerHTML = "";
+}
 
 function loadProducts(JSONproducts) {
 	const http = new XMLHttpRequest();
@@ -168,12 +180,9 @@ function loadProducts(JSONproducts) {
 							</ul>
 						</div>
 					</a>
-					<button class="productLikeHeart" role="button">
-						<span class="material-symbols-outlined">favorite</i>
-					</button>
 					<div class="productDescription">
 						<a class="productTitle" href="#">
-							<h3>${product.title}</h3>
+							<p>${product.title}</p>
 						</a>
 						<div class="productPrice">
 							<span class="productPrice--sale">$${product.salePrice}.00</span>
@@ -204,89 +213,60 @@ function loadProducts(JSONproducts) {
     // }
 }
 
-// function printTable(array) {
-// 	let container = document.getElementById("cart");
-// 	let totalPrc = getTotalPrice(array);
-// 	let table = document.createElement("div");
+function addToCartTable(array) {
+	let container = document.getElementById("cartInner");
+	let totalPrc = getTotalPrice(array);
 
-// 	container.innerHTML = "";
-// 	table.innerHTML = `
-//         <table id="cartTable" class="cartTable">
-//             <thead>
-//                 <tr>
-//                     <th>Item</th>
-//                     <th>Cantidad</th>
-//                     <th>Precio</th>
-//                     <th>Accion</th>
-//                 </tr>
-//             </thead>
-//             <tbody id="tableContent">
-//             </tbody>
-//         </table>
-//     `;
+	container.innerHTML = "";
 
-// 	container.appendChild(table);
+	for (let product of array) {
+		let productData = document.createElement("div");
+		productData.className += "cartItem d-flex flex-row justify-content-between align-items-center";
+		productData.innerHTML = `
+			<p class="tableNameTitle">${product.title}</p>
+			<p class="tablePriceTitle">$ ${product.salePrice}.00</p>
+			<div class="tableCantTitle d-flex flex-row">
+				<span id="delete${product.id}" class="cantBtn material-symbols-outlined">remove</span>
+				<p>${product.quantity}</p>
+				<span id="add${product.id}" class="cantBtn material-symbols-outlined">add</span>
+			</div>
+			<p class="tableSubTitle">$ ${product.totalPrice}.00</p>
+      `;
 
-// 	let tableContent = document.getElementById("tableContent");
+		container.appendChild(productData);
 
-// 	for (let product of array) {
-// 		let productData = document.createElement("tr");
-// 		productData.innerHTML = `
-//                 <td>${product.title}</td>
-//                 <td>${product.quantity}</td>
-//                 <td>${product.totalPrice}</td>
-//                 <td><button id="eliminar${product.id}" class="button btn-dark">Eliminar</button></td>
-//       `;
+		let deleteBtn = document.getElementById(`delete${product.id}`);
+		deleteBtn.addEventListener("click", () => deleteFromCart(product.id));
 
-// 		tableContent.appendChild(productData);
+		let addBtn = document.getElementById(`add${product.id}`);
+		addBtn.addEventListener("click", () => addToCart(product.id));
+	}
 
-// 		let deleteBtn = document.getElementById(`eliminar${product.id}`);
-// 		deleteBtn.addEventListener("click", () => deleteFromCart(product.id));
-// 	}
-
-// 	let accionesCarrito = document.getElementById("actions__cart");
-// 	accionesCarrito.innerHTML = `
-// 		<h5>PrecioTotal: $${totalPrc}</h5></br>
-// 		<button id="vaciarCarrito" onclick="deleteCart()" class="button btn-dark">Vaciar Carrito</button>
-// 	`;
-// }
-
-// function cartInStorage() {
-// 	let inStorage = JSON.parse(localStorage.getItem("cartInStorage"));
-
-// 	if (inStorage) {
-// 		for (const item of inStorage) {
-// 			let product = new Product(item, item.quantity);
-// 			product.refreshTotalPrice();
-// 			cart.push(product);
-// 		}
-
-// 		printTable(cart);
-// 	}
-// }
-
-function search(e) {
-	e.preventDefault();
-
-	let input = document.getElementById("searchForm").value.toLowerCase();
-	let research = products.filter((item) => item.title.toLowerCase().includes(input));
-	console.log(research);
-	printProductsInHTML(research);
+	let cartActions = document.createElement("div");
+	cartActions.innerHTML = `
+		<h5>PrecioTotal:  <span> $ ${totalPrc}.00</span></h5>
+		<div class="cartButtons d-flex justify-content-between">
+			<button id="deleteCart" onclick="deleteCart()" class="button">Borrar todo</button>
+			<button id="toPay" onclick="goToPay()" class="button">Pagar</button>
+		</div>
+	`;
+	container.appendChild(cartActions);
 }
 
-/* ---------> Eventos <---------- */
-let searchbutton = document.getElementById("researchBtn");
-searchbutton.addEventListener("click", search);
+function cartInStorage() {
+	let inStorage = JSON.parse(localStorage.getItem("cartInStorage"));
+
+	if (inStorage) {
+		for (const item of inStorage) {
+			let product = new Product(item, item.quantity);
+			product.refreshTotalPrice();
+			cart.push(product);
+		}
+
+		addToCartTable(cart);
+	}
+}
 
 /* -----> Llamar funciones <----- */
 loadProducts(products);
-// cartInStorage(); // Consulta al Storage para saber si hay información almacenada. Si hay datos, se imprimen en el HTML al refrescar la página
-
-
-
-
-
-// <span data-toggle="tooltip" data-placement="bottom" title="0" id="contador" class="mostrar">2</span>
-// <div class="cartListInner listInner">
-
-// </div>
+cartInStorage(); 

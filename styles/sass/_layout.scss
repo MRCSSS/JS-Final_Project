@@ -10,29 +10,23 @@ body {
     background-repeat: repeat;
     background-size: cover;
     header {
-        nav {
-            z-index: 10;
+        .navbar {
+            z-index: 10;            
         }          
     }
     section {
         padding-top: 100px;
-
-        .searchForm {
-            padding-bottom: 50px;
-            .searchInput {
-                max-width: 1300px;
-                margin-top: 0;
-                height: 35px;
-            }
-            .searchButton {
-                width: 45px;
-                height: 35px;
-            }
+        .notificationContainer{
+            z-index: 1000;
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
         }
-        .gridContainer {
+        .productsGrid {
             background-color: $fondoMedio;
             border: solid 2px $contraste1;
             border-radius: 10px;
+            margin-bottom: 25px;
             max-width: 1600px;
             box-shadow: 10px 10px 6px rgba($color: $contraste2, $alpha: 0.5);
             h2 {
@@ -44,10 +38,8 @@ body {
                 text-shadow: 5px 4px 2px rgba($color: $contraste2, $alpha: 1);
                 height: 45px;
             }
-        }
-        .productsGrid {
             .containerProducts {
-
+                margin-bottom: 25px;
             }
         }
         .shopGrid {
